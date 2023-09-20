@@ -8,8 +8,8 @@ const Home = () => {
       <div className='flex flex-wrap justify-center items-center min-h-[70vh]'>
         <div className='left w-[45%] lg:w-[100%] lg:text-center '>
           <h6 className='uppercase font-medium font-Roboto'>Welcome to</h6>
-          <h2 className='uppercase font-Poppins text-5xl mt-2 font-bold'>ABhi <span className='tracking-wider'>Ecommerce</span></h2>
-          <p className='font-Roboto font-medium mt-3'>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Mollitia pariatur <br /> magni ex sequi fuga aperiam, vitae recusandae <br /> aliquid eius? Pariatur.</p>
+          <h2 className='uppercase font-Poppins text-5xl mt-2 font-bold md:text-3xl'>ABhi <span className='tracking-wider'>Ecommerce</span></h2>
+          <p className='font-Roboto font-medium md:font-normal mt-3'>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Mollitia pariatur <br /> magni ex sequi fuga aperiam, vitae recusandae <br /> aliquid eius? Pariatur.</p>
           <Link to={"/product"}><button className='px-3 bg-slate-300 py-2 mt-3 cursor-pointer'>Shop Now</button></Link>
         </div>
         <div className="image-container relative lg:mt-[50px]">

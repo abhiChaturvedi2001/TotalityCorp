@@ -7,6 +7,7 @@ const Product = () => {
   // making a copy and transfer original to another copy
   const [ProductsData, setProductsData] = useState([]);
   const [filterProducts, setFilterProducts] = useState([]);
+  
   useEffect(() => {
     fetchData();
   }, [])

@@ -12,10 +12,10 @@ export default {
       },
       screens: {
         'xl': {'max': '1100px'},
-        'lg': {'max' : '968px'},
-        'md': {'max': '550px'},
-        'sm':{'max' : '420px'},
-        's': {'max' : '350px'},
+        'lg': {'max' : '988px'},
+        'md': {'max': '750px'},
+        'sm':{'max' : '520px'},
+        's': {'max' : '380px'},
       }
     },
   },
