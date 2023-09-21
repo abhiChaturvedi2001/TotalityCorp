@@ -9,7 +9,16 @@ const CheckOutPage = () => {
   const [pincode, setpincode] = useState("")
   const [Phone, setPhone] = useState(0)
 
-  
+  const OrderPlaceComponent = () =>{
+     alert("Hurray ! Your Order Has been Placed");
+     setName("");
+     setLastName("");
+     setEmail("");
+     setAddress("");
+     setCity("");
+     setpincode("");
+     setPhone("");
+  }
   return (
     <>
       <div className='w-[70%] mx-auto'>
