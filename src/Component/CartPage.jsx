@@ -1,14 +1,23 @@
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom';
 
 const CartPage = ({ cartData, setCartData, cart, setCart = { setCart } }) => {
-    let [quantity, setQuantity] = useState(1)
+    let [quantity, setQuantity] = useState(1);
+    let [totalPrice, settotalPrice] = useState([0])
     const deleteItems = (id) => {
         const updatedCartData = cartData.filter(item => item.id !== id);
         setCartData(updatedCartData);
         setCart(--cart);
     }
-    const increment = () => {
+    const increment = (price) => {
         setQuantity(++quantity);
+        settotalPrice(price)
+        const amount = totalPrice.reduce((a, b) => {
+            return a + b;
+        });
+
+        console.log(amount)
+
     }
     const decrement = () => {
         if (quantity > 1) {
@@ -48,12 +57,12 @@ const CartPage = ({ cartData, setCartData, cart, setCart = { setCart } }) => {
                                         </div>
                                         <div className='flex justify-between w-[16rem]'>
                                             <div>
-                                                <button onClick={() => increment()} className='text-lg font-medium'>+</button>
+                                                <button onClick={() => increment(items.price)} className='text-lg font-medium'>+</button>
                                                 <span className='border px-2 py-2 ml-2'>{quantity}</span>
-                                                <button onClick={() => decrement()} className='ml-2'>-</button>
+                                                <button onClick={() => decrement(items.price)} className='ml-2'>-</button>
                                             </div>
                                             <h2>{items.price}</h2>
-                                            <h3>20000</h3>
+                                            <h3>{totalPrice == 0 ? items.price : totalPrice}</h3>
                                         </div>
                                     </div>
                                 </>
@@ -61,6 +70,14 @@ const CartPage = ({ cartData, setCartData, cart, setCart = { setCart } }) => {
                         })
                     }
                 </div>
+                <div className='w-[20%] h-[10vh] mt-5 md:w-[100%] pb-4 px-3 relative mx-auto'>
+                    <div className='flex justify-between' >
+                        <h3>SubTotal : </h3>
+                        <h3>1000</h3>
+                    </div>
+                    <Link to={"/cart/checkoutpage"}><button className='absolute mt-2 right-0 border px-3 py-2  rounded-r-md cursor-pointer'>checkout</button></Link>
+                </div>
+
             </div>
         </>
     )

@@ -6,6 +6,7 @@ import About from './Component/About'
 import Product from './Component/Product'
 import ProductPage from './Component/ProductPage'
 import CartPage from './Component/CartPage'
+import CheckOutPage from "./Component/CheckOutPage"
 
 const App = () => {
   
@@ -23,6 +24,7 @@ const App = () => {
           <Route path='/product' element={<Product />} />
           <Route path='/productpage/:id' element={<ProductPage cart={cart} setCart={setCart} cartData={cartData} setCartData={setCartData} />} />
           <Route path='/cart' element={<CartPage cartData={cartData} setCartData={setCartData} cart={cart} setCart={setCart}  />} />
+          <Route path='/cart/checkoutpage' element={ <CheckOutPage /> } />
         </Routes>
       </BrowserRouter>
     </>

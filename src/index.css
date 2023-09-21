@@ -2,15 +2,3 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-
-.image-container::before {
-    content: "";
-    background-color: aquamarine;
-    width: 250px;
-    height: 180px;
-    position: absolute;
-    left: 40%;
-    top: -12%;
-    z-index: -100;
-}
