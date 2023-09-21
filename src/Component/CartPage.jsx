@@ -1,30 +1,58 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom';
 
-const CartPage = ({ cartData, setCartData, cart, setCart = { setCart } }) => {
-    let [quantity, setQuantity] = useState(1);
-    let [totalPrice, settotalPrice] = useState([0])
-    const deleteItems = (id) => {
+const CartPage = ({ cartData, setCartData, cart, setCart = { setCart }, totalAmount, setTotalAmount }) => {
+    // function to delete the items in the cart 
+    const deleteItems = (id,) => {
         const updatedCartData = cartData.filter(item => item.id !== id);
         setCartData(updatedCartData);
         setCart(--cart);
     }
-    const increment = (price) => {
-        setQuantity(++quantity);
-        settotalPrice(price)
-        const amount = totalPrice.reduce((a, b) => {
-            return a + b;
+
+    // function to increment the quantity of the cart
+    const increment = (id, price) => {
+        const updatedCartData = cartData.map(item => {
+            if (item.id === id) {
+                return {
+                    ...item,
+                    quantity: item.quantity + 1,
+                };
+            }
+            return item;
         });
+        setCartData(updatedCartData);
 
-        console.log(amount)
+    };
 
-    }
-    const decrement = () => {
-        if (quantity > 1) {
-            setQuantity(--quantity);
-        }
-    }
+    // function to decrement the quantity of the cart
+    const decrement = (id) => {
+        const updatedCartData = cartData.map(item => {
+            if (item.id === id && item.quantity > 1) {
+                return {
+                    ...item,
+                    quantity: item.quantity - 1,
+                };
+            }
+            return item;
+        });
+        setCartData(updatedCartData);
+    };
+    
+    // Calculate the total amount based on the cart data
+    useEffect(() => {
+        // Calculate the total amount based on cartData
+        const calculatedTotal = cartData.reduce((total, item) => {
+          return total + item.price * item.quantity;
+        }, 0);
+      
+        // Update the totalAmount state
+        setTotalAmount(calculatedTotal);
+      }, [cartData]);
+      
+
+    // here we can do conditional rendering
     if (cartData.length == 0) return <h1 className='text-center'>Cart Is Empty.....</h1>
+
     return (
         <>
             <div className='px-4'>
@@ -57,12 +85,12 @@ const CartPage = ({ cartData, setCartData, cart, setCart = { setCart } }) => {
                                         </div>
                                         <div className='flex justify-between w-[16rem]'>
                                             <div>
-                                                <button onClick={() => increment(items.price)} className='text-lg font-medium'>+</button>
-                                                <span className='border px-2 py-2 ml-2'>{quantity}</span>
-                                                <button onClick={() => decrement(items.price)} className='ml-2'>-</button>
+                                                <button onClick={() => increment(items.id, items.price)} className='text-lg font-medium'>+</button>
+                                                <span className='border px-2 py-2 ml-2'>{items.quantity}</span>
+                                                <button onClick={() => decrement(items.id)} className='ml-2'>-</button>
                                             </div>
                                             <h2>{items.price}</h2>
-                                            <h3>{totalPrice == 0 ? items.price : totalPrice}</h3>
+                                            <h3>{items.price * items.quantity}</h3>
                                         </div>
                                     </div>
                                 </>
@@ -73,7 +101,7 @@ const CartPage = ({ cartData, setCartData, cart, setCart = { setCart } }) => {
                 <div className='w-[20%] h-[10vh] mt-5 md:w-[100%] pb-4 px-3 relative mx-auto'>
                     <div className='flex justify-between' >
                         <h3>SubTotal : </h3>
-                        <h3>1000</h3>
+                        <h3>{totalAmount}</h3>
                     </div>
                     <Link to={"/cart/checkoutpage"}><button className='absolute mt-2 right-0 border px-3 py-2  rounded-r-md cursor-pointer'>checkout</button></Link>
                 </div>

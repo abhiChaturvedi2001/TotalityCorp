@@ -2,3 +2,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+.navlinks a{
+    margin-top: 1rem;
+}

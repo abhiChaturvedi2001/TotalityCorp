@@ -9,11 +9,12 @@ import CartPage from './Component/CartPage'
 import CheckOutPage from "./Component/CheckOutPage"
 
 const App = () => {
-  
+
   // for cart state
   const [cart, setCart] = useState(0);
   // for cart data
   const [cartData, setCartData] = useState([]);
+  const [totalAmount, setTotalAmount] = useState(0);
   return (
     <>
       <BrowserRouter>
@@ -23,8 +24,8 @@ const App = () => {
           <Route path='/about' element={<About />} />
           <Route path='/product' element={<Product />} />
           <Route path='/productpage/:id' element={<ProductPage cart={cart} setCart={setCart} cartData={cartData} setCartData={setCartData} />} />
-          <Route path='/cart' element={<CartPage cartData={cartData} setCartData={setCartData} cart={cart} setCart={setCart}  />} />
-          <Route path='/cart/checkoutpage' element={ <CheckOutPage /> } />
+          <Route path='/cart' element={<CartPage cartData={cartData} setCartData={setCartData} cart={cart} setCart={setCart} totalAmount={totalAmount} setTotalAmount={setTotalAmount} />} />
+          <Route path='/cart/checkoutpage' element={<CheckOutPage totalAmount={totalAmount} />} />
         </Routes>
       </BrowserRouter>
     </>

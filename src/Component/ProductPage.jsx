@@ -29,9 +29,6 @@ const ProductPage = ({ setCart, cart, setCartData, cartData }) => {
             setCartData(updatedCartData);
             alert("Please go to the cart Items is already exist")
         }
-
-        // Update the total number of items in the cart
-
     }
 
     useEffect(() => {
@@ -44,7 +41,7 @@ const ProductPage = ({ setCart, cart, setCartData, cartData }) => {
         setSingleProduct(json);
     }
 
-    if (SingleProduct.length === 0) return <h1>Cart is Empty</h1>
+    if (SingleProduct.length === 0) return <h1>Loading.........</h1>
     return (
         <>
             <div className="flex justify-around flex-wrap w-[80%] lg:w-[90%] md:w-[100%] px-3 m-auto items-center h-[80vh]">

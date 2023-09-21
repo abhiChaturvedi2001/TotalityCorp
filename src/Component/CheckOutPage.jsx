@@ -1,23 +1,18 @@
 import React, { useState } from 'react'
 
-const CheckOutPage = () => {
-  const [Name, setName] = useState("")
-  const [LastName, setLastName] = useState("")
-  const [email, setEmail] = useState("")
-  const [Address, setAddress] = useState("")
-  const [City, setCity] = useState("")
-  const [pincode, setpincode] = useState("")
+const CheckOutPage = ({totalAmount}) => {
+  const [Name, setName] = useState(" ")
+  const [LastName, setLastName] = useState(" ")
+  const [email, setEmail] = useState(" ")
+  const [Address, setAddress] = useState(" ")
+  const [City, setCity] = useState(" ")
+  const [pincode, setpincode] = useState(" ")
   const [Phone, setPhone] = useState(0)
 
   const OrderPlaceComponent = () =>{
-     alert("Hurray ! Your Order Has been Placed");
-     setName("");
-     setLastName("");
-     setEmail("");
-     setAddress("");
-     setCity("");
-     setpincode("");
-     setPhone("");
+     if(Name == " " && LastName === " " && email === " " && Address === " " && City === " " && pincode === " " && Phone === 0){
+      alert("Please enter Shipping Information")
+      }else{ alert("Hurray ! Your Order Has been Places With amount of " + totalAmount)}
   }
   return (
     <>
