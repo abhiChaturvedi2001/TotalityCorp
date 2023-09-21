@@ -41,13 +41,13 @@ const Product = () => {
               buttons.map((btn) => {
                 return (
                   <>
-                    <button className='px-4 border ml-2 py-2 cursor-pointer' key={btn.id} onClick={() => filterItems(btn.type)} type={btn.type}>{btn.buttonName}</button>
+                    <button className='px-4 md:px-2 border ml-2 py-2 cursor-pointer' key={btn.id} onClick={() => filterItems(btn.type)} type={btn.type}>{btn.buttonName}</button>
                   </>
                 )
               })
             }
           </div>
-          <div className='mt-4 w-[100%] px-4 grid grid-cols-3 justify-items-center justify-center gap-3 md:flex md:flex-wrap'>
+          <div className='mt-4 w-[100%] px-4 grid grid-cols-3 justify-items-center justify-center gap-3 md:flex md:flex-wrap md:px-3'>
             {
               filterProducts.map((items) => {
                 return (
